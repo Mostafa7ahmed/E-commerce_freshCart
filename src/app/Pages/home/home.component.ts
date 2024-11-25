@@ -6,17 +6,21 @@ import { Subscription } from 'rxjs';
 import { CategoryService } from '../../Core/service/category.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SplittextPipe } from '../../Core/Pipes/splittext.pipe';
+import { SerchPipe } from '../../Core/Pipes/serch.pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule , CommonModule, RouterLink ],
+  imports: [CarouselModule , CommonModule, RouterLink ,SplittextPipe , SerchPipe, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   private readonly _ProductsService = inject(ProductsService);
   private readonly _CategoryService = inject(CategoryService);
+  textSearch:string =""
 
   prodcutList: Iproduct[] = [];
   categoriesList: Category[] = [];

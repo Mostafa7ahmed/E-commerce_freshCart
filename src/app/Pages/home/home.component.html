@@ -66,15 +66,17 @@
 <section>
 
     <h2>Popular Prodcts</h2>
-    <div class="row g-3 my-5">
-        @for (prodcut of prodcutList.slice(0,12); track prodcut._id) {
+    <div class="row g-3 my-5 p-2">
+        <input type="search" placeholder="Search By Name" class="p-2 form-control my-2  "   [(ngModel)]="textSearch">
+
+        @for (prodcut of prodcutList.slice(0,12) | serch :textSearch; track prodcut._id) {
             
             <div class="col-md-2">
                 <div class="product p-2" >
                        <a class="" [routerLink]="['/details', prodcut._id]">
                         <img [src]="prodcut.imageCover" [alt]="prodcut.title " class="w-100">
-                        <h3 class="small text-main my-2">{{prodcut.category.name}}</h3>
-                        <h4 class="h6">{{prodcut.title.split(" " , 2).join(" ")}}</h4>
+                        <h3 class="small text-main my-2">{{prodcut.category.name }}</h3>
+                        <h4 class="h6">{{prodcut.title | splittext:2}}</h4>
                         <div class="d-flex justify-content-between align-items-center my-2">
                             <span>{{prodcut.price}}</span>
                             <div class="">
