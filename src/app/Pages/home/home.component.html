@@ -1,0 +1,98 @@
+<Section>
+    <div class="row g-0">
+        <div class="col-md-10">
+            <div class="">
+                <owl-carousel-o [options]="customOptionsMain">
+                    <ng-template carouselSlide>
+                        <img src="images/img1.avif" alt=""  height="300px"  class="w-100 ">
+
+                    </ng-template>  
+                    <ng-template carouselSlide>
+                        <img src="images/img2.avif" alt=""  height="300px"  class="w-100 ">
+
+                    </ng-template>  
+                    <ng-template carouselSlide>
+                        <img src="images/img3.avif" alt=""  height="300px"  class="w-100 ">
+
+                    </ng-template>  
+                    <ng-template carouselSlide>
+                        <img src="images/img4.avif" alt=""  height="300px"  class="w-100 ">
+
+                    </ng-template>  
+                    <ng-template carouselSlide>
+                        <img src="images/img5.avif" alt=""  height="300px"  class="w-100 ">
+
+                    </ng-template>  
+                    <ng-template carouselSlide>
+                        <img src="images/img7.avif" alt=""  height="300px"  class="w-100 ">
+
+                    </ng-template>  
+      
+                  </owl-carousel-o>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="">
+                <img src="images/grocery-banner.png" alt=""   height="150px"   class="w-100 ">
+                <img src="images/grocery-banner-2.jpeg" alt=""   height="150px"   class="w-100 ">
+
+            </div>
+        </div>
+    </div>
+</Section>
+
+
+<section>
+    <h2  class=" my-5">Popular categories</h2>
+
+    <owl-carousel-o [options]="customOptions">
+
+        @for ( category of categoriesList ; track category._id) {
+            <ng-template carouselSlide [id]="category._id">
+
+                <div class="category">
+                    <img [src]="category.image" [alt]="category.name"  class="w-100 " height="250px">
+                    <h3 class="text-main h6 text-center mt-3">{{category.name}}</h3>
+
+                </div>
+              </ng-template>
+          
+        }
+    
+      </owl-carousel-o>
+</section>
+
+<!-- Ptoducts -->
+<section>
+
+    <h2>Popular Prodcts</h2>
+    <div class="row g-3 my-5">
+        @for (prodcut of prodcutList.slice(0,12); track prodcut._id) {
+            
+            <div class="col-md-2">
+                <div class="product p-2" >
+                       <a class="" [routerLink]="['/details', prodcut._id]">
+                        <img [src]="prodcut.imageCover" [alt]="prodcut.title " class="w-100">
+                        <h3 class="small text-main my-2">{{prodcut.category.name}}</h3>
+                        <h4 class="h6">{{prodcut.title.split(" " , 2).join(" ")}}</h4>
+                        <div class="d-flex justify-content-between align-items-center my-2">
+                            <span>{{prodcut.price}}</span>
+                            <div class="">
+                                <span> <i class="fas fa-star rating-color mx-2" aria-hidden="true"></i></span>
+                                <span class="text-muted">{{prodcut.ratingsAverage}}</span>
+            
+            
+                            </div>
+                        </div>
+    
+                       </a>
+
+                    <button class="btn-main d-block w-100">Add To Cart </button>
+                  </div>
+    
+            </div>
+          
+        }
+    </div>
+
+</section>

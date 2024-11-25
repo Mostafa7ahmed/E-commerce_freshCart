@@ -1,0 +1,50 @@
+<section class="bg-main-light shadow my-5 rounded-2 p-4">
+  <h1 class="h2 text-main fw-bold">Login Now</h1>
+
+  <form [formGroup]="loginForm" (ngSubmit)="registerFun()">
+    <div class="my-2">
+      <label for="Email">Email</label>
+      <input type="email" id="Email " class="form-control" formControlName="email" [ngClass]="{
+            'is-valid': !loginForm.get('email')?.errors && loginForm.get('email')?.touched,
+            'is-invalid': loginForm.get('email')?.errors && loginForm.get('email')?.touched,
+            }" />
+      @if(loginForm.get("email")?.errors && loginForm.get("email")?.touched){
+      @if(loginForm.get("email")?.getError("required")){
+      <p class="text-danger">email Is Required</p>
+
+      } @if(loginForm.get("email")?.getError("pattern")){
+      <p class="text-danger">email Is pattern</p>
+
+      } }
+    </div>
+
+    <div class="my-2">
+      <label for="password">Password</label>
+      <input type="password" id="password " class="form-control" formControlName="password" [ngClass]="{
+            'is-valid': !loginForm.get('password')?.errors && loginForm.get('password')?.touched,
+            'is-invalid': loginForm.get('password')?.errors && loginForm.get('password')?.touched,
+            }" />
+
+      @if(loginForm.get("password")?.errors &&
+      loginForm.get("password")?.touched){
+      @if(loginForm.get("password")?.getError("required")){
+      <p class="text-danger">password Is Required</p>
+      } @if(loginForm.get("password")?.getError("pattern")){
+      <p class="text-danger">password Is pattern</p>
+
+      } }
+    </div>
+    <div class="d-flex  align-items-center justify-content-between my-2 ">
+
+
+      <a routerLink="/forget" class="link-primary">ForgotPassword</a>
+
+      <button class="btn-main " type="submit" [disabled]="loginForm.invalid">
+        Login @if(isLoading){
+        <span> <i class="fas fa-spin fa-spinner mx-2"></i> </span>
+
+        }
+      </button>
+    </div>
+  </form>
+</section>
