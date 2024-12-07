@@ -1,3 +1,4 @@
+import { AllorderbuyComponent } from './Pages/allorderbuy/allorderbuy.component';
 import { CategorgiesComponent } from './Pages/categorgies/categorgies.component';
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './Layouts/auth-layout/auth-layout.component';
@@ -13,6 +14,7 @@ import { authGuard } from './Core/Guards/auth.guard';
 import { isAuthGuard } from './Core/Guards/is-auth.guard';
 import { DetaliesProductComponent } from './Pages/detalies-product/detalies-product.component';
 import { ForgetpasswordComponent } from './Pages/forgetpassword/forgetpassword.component';
+import { AllOrdersComponent } from './Pages/all-orders/all-orders.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +41,10 @@ export const routes: Routes = [
         {path:"cart" , component :CartComponent},
         {path:"brand" , component :BrandsComponent},
         {path:"category" , component :CategorgiesComponent},
+        {path:"allorders/:cartId" , component :AllOrdersComponent  },
+        {path:"allorders" , component :AllorderbuyComponent  },
+
+
 
 
     ]

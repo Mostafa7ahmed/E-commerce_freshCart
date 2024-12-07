@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { SplittextPipe } from '../../Core/Pipes/splittext.pipe';
 import { SerchPipe } from '../../Core/Pipes/serch.pipe';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../Core/service/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,9 @@ import { FormsModule } from '@angular/forms';
 export class HomeComponent implements OnInit {
   private readonly _ProductsService = inject(ProductsService);
   private readonly _CategoryService = inject(CategoryService);
+  private readonly _CartService = inject(CartService);
+
+
   textSearch:string =""
 
   prodcutList: Iproduct[] = [];
@@ -77,23 +81,37 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts() {
+
     this.getAllProducts = this._ProductsService.GetAllProdcuts().subscribe({
       next: (res) => {
         this.prodcutList = res.data;
+
       },
       error: () => {},
     });
   }
 
   getCateogries() {
+
     this.getAllCateogies = this._CategoryService.GetAllCategories().subscribe({
       next: (res) => {
         this.categoriesList = res.data;
+
       },
       error: () => {},
     });
   }
 
+  addCart(id:string) {
+
+    console.log(id);
+    this._CartService.addProductToCart(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+  
+      }
+    })
+  }
 
   ngOnDestroy() {
     this.getAllProducts.unsubscribe();

@@ -50,7 +50,7 @@
         @for ( category of categoriesList ; track category._id) {
             <ng-template carouselSlide [id]="category._id">
 
-                <div class="category">
+                <div class="category mx-3">
                     <img [src]="category.image" [alt]="category.name"  class="w-100 " height="250px">
                     <h3 class="text-main h6 text-center mt-3">{{category.name}}</h3>
 
@@ -89,7 +89,7 @@
     
                        </a>
 
-                    <button class="btn-main d-block w-100">Add To Cart </button>
+                    <button class="btn-main d-block w-100" (click)="addCart( prodcut._id)">Add To Cart </button>
                   </div>
     
             </div>

@@ -10,9 +10,6 @@ export class CategoryService {
   private readonly _httpCliect = inject(HttpClient);
 
   constructor() { }
-
-
-
   
   GetAllCategories(): Observable<any>{
     return this._httpCliect.get(`${environment.baseUrl}${environment.categoriesRouter}`)

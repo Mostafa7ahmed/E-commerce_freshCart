@@ -1,0 +1,9 @@
+.row img{
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.btn:disabled{
+    cursor: not-allowed !important;
+    background-color: #ccc;
+}

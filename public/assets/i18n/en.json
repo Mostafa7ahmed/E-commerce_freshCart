@@ -1,0 +1,13 @@
+{
+    "navbar":{
+        "Home" : "Home",
+        "Products" :"Products",
+        "Categorgies":"Categorgies",
+        "Brand":"Brand",
+         "lang" :"En"
+    },
+    "Homepage":{
+
+    }
+
+}

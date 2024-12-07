@@ -13,7 +13,7 @@ export class ProductsService {
   constructor() { }
 
 
-  GetAllProdcuts(): Observable<any>{
+   GetAllProdcuts(): Observable<any>{
      return this._httpCliect.get(`${environment.baseUrl}${environment.productsRouter}`)
   }
 

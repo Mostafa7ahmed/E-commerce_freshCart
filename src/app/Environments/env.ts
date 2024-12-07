@@ -8,6 +8,9 @@ export const environment = {
     forgotPasswordRouter:"/api/v1/auth/forgotPasswords",
     verifyResetCodeRouter:"/api/v1/auth/verifyResetCode",
     resetPasswordRouter:"/api/v1/auth/resetPassword",
+    cartRouter:"/api/v1/cart",
+    orderPaymentRouter :"/api/v1/orders/checkout-session",
+    urlRouter :"http://localhost:4200"
 
 
     

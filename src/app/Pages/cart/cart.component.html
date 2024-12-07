@@ -1,1 +1,41 @@
-<p>cart works!</p>
+<section class="p-4 bg-main-light my-2  rounded-3 shadow-sm ">
+    <h1 class="h2 text-center fw-bolder">Shop Cart</h1>
+    <div class="d-flex align-items-center justify-content-between">
+        <p class="text-main">Total Cart Price : {{cartDetails.totalCartPrice | currency :"GBP"}}</p>
+
+        <button class="btn text-danger cr p-0 " (click)="deleteCarts()">Clear All <i class="fa-solid fa-trash text-danger ms-3 cr "></i>                </button>
+
+      </div>
+
+    @for (cartItem of cartDetails.products; track cartItem._id) {
+    <div class="row my-5">
+        <div class="col-md-1">
+            <img [src]="cartItem.product.imageCover" [alt]="cartItem.product.title" class="w-100 ">
+        </div>
+        <div class="col-md-11  d-flex align-items-center justify-content-between">
+            <div class="">
+                <h3 class="h5">{{cartItem.product.title}}</h3>
+                <p class="text-main">Price : {{cartItem.price | currency :"GBP"}}</p>
+                <button class="btn text-danger cr p-0 " (click)="deleteProductCart(cartItem.product.id)"><i class="fa-solid fa-trash text-danger cr "></i>                </button>
+
+            </div>
+
+
+            <div class="d-flex gap-3 ">
+
+                <span class="btn p-0  border-0 text-main" (click)="updateProductCart(cartItem.product.id, cartItem.count + 1 )"><i class="fa  fa-xl  fa-square-plus" aria-hidden="true"></i></span>
+                <span >{{cartItem.count}}</span>
+                <button   class="btn p-0 border-0 text-main" [disabled]="cartItem.count == 1"  (click)="updateProductCart(cartItem.product.id, cartItem.count - 1 )"><i class="fa  fa-xl  fa-square-minus" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+    </div>
+
+    }
+
+
+    <button [routerLink]="['/allorders', cartDetails._id]" class="btn-main">Orders</button>
+
+
+
+</section>
